@@ -1,6 +1,6 @@
 from sklearn.model_selection import cross_val_score
 import pandas as pd
-from everywhereml.sklearn.ensemble import RandomForestClassifier
+import joblib
 from sklearn.model_selection import train_test_split
 
 # Prepare dataset
@@ -13,8 +13,11 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.1, stratify=y, random_state=42
 )
 
-# Train RandomForestClassifier
-clf = RandomForestClassifier(n_estimators=20, max_leaf_nodes=10)
+# Path to the saved model file in the "model" folder
+model_path = "../models/random_forest_model.pkl"
+
+# Load the trained model
+clf = joblib.load(model_path)
 
 # Perform 5-fold cross-validation
 cv_scores = cross_val_score(clf, X_train, y_train, cv=5, scoring='accuracy')
