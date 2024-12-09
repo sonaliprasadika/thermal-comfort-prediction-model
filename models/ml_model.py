@@ -1,6 +1,7 @@
 import pandas as pd
 from everywhereml.sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+import joblib
 
 # Prepare dataset
 df = pd.read_csv("../data/dataset.csv", sep=",").sample(frac=1, random_state=42).reset_index(drop=True)
@@ -20,6 +21,10 @@ clf.fit(X_train, y_train)
 print(f'Score: {clf.score(X_test, y_test):3.3f}')
 prediction = clf.predict([[70, 20, 1000]])
 print("Prediction for new input:", prediction)
+
+# Save the trained model
+joblib.dump(clf, 'random_forest_model.pkl')
+print("Model saved as 'random_forest_model.pkl'")
 
 # Save the model for MicroPython
 clf.to_micropython_file('random_forest_model.py')
