@@ -112,119 +112,104 @@ class RandomForestClassifier:
         """
         Random forest's tree #0
         """
-        if x[0] < 69.0:
-            return 0, 0.5263157894736842
+        if x[1] < -0.30122511088848114:
+            return 1, 0.45614035087719296
         else:
-            if x[0] < 76.0:
-                return 1, 0.47368421052631576
-            else:
-                return 0, 0.5263157894736842
+            return 0, 0.543859649122807
 
     def tree1(self, x):
         """
         Random forest's tree #1
         """
-        if x[0] < 69.0:
-            return 0, 0.47368421052631576
-        else:
-            if x[0] < 76.0:
-                return 1, 0.5263157894736842
+        if x[0] < 0.5730698779225349:
+            if x[1] < -0.2699289917945862:
+                return 1, 0.543859649122807
             else:
-                return 0, 0.47368421052631576
+                return 0, 0.45614035087719296
+        else:
+            return 0, 0.45614035087719296
 
     def tree2(self, x):
         """
         Random forest's tree #2
         """
-        if x[1] < 30.0:
-            return 1, 0.5087719298245614
+        if x[1] < -0.3325212299823761:
+            return 1, 0.49122807017543857
         else:
-            return 0, 0.49122807017543857
+            return 0, 0.5087719298245614
 
     def tree3(self, x):
         """
         Random forest's tree #3
         """
-        if x[1] < 29.0:
-            return 1, 0.5087719298245614
+        if x[1] < -0.3325212299823761:
+            return 1, 0.5614035087719298
         else:
-            return 0, 0.49122807017543857
+            return 0, 0.43859649122807015
 
     def tree4(self, x):
         """
         Random forest's tree #4
         """
-        if x[1] < 29.0:
-            return 1, 0.5614035087719298
+        if x[1] < -0.30122511088848114:
+            return 1, 0.47368421052631576
         else:
-            return 0, 0.43859649122807015
+            return 0, 0.5263157894736842
 
     def tree5(self, x):
         """
         Random forest's tree #5
         """
-        if x[0] < 69.0:
-            return 0, 0.49122807017543857
+        if x[1] < -0.3325212299823761:
+            return 1, 0.45614035087719296
         else:
-            if x[0] < 76.0:
-                return 1, 0.5087719298245614
-            else:
-                return 0, 0.49122807017543857
+            return 0, 0.543859649122807
 
     def tree6(self, x):
         """
         Random forest's tree #6
         """
-        if x[0] < 69.0:
-            return 0, 0.5789473684210527
+        if x[1] < -0.2699289917945862:
+            return 1, 0.5964912280701754
         else:
-            if x[0] < 76.0:
-                return 1, 0.42105263157894735
-            else:
-                return 0, 0.5789473684210527
+            return 0, 0.40350877192982454
 
     def tree7(self, x):
         """
         Random forest's tree #7
         """
-        if x[1] < 29.0:
-            return 1, 0.45614035087719296
-        else:
+        if x[0] < 0.10112998075783253:
             return 0, 0.543859649122807
+        else:
+            if x[0] < 0.5730698779225349:
+                return 1, 0.45614035087719296
+            else:
+                return 0, 0.543859649122807
 
     def tree8(self, x):
         """
         Random forest's tree #8
         """
-        if x[0] < 69.0:
-            return 0, 0.47368421052631576
+        if x[1] < -0.30122511088848114:
+            return 1, 0.6140350877192983
         else:
-            if x[1] < 29.5:
-                return 1, 0.5263157894736842
-            else:
-                return 0, 0.47368421052631576
+            return 0, 0.38596491228070173
 
     def tree9(self, x):
         """
         Random forest's tree #9
         """
-        if x[0] < 69.0:
-            return 0, 0.42105263157894735
+        if x[1] < -0.3325212299823761:
+            return 1, 0.49122807017543857
         else:
-            if x[1] < 29.0:
-                return 1, 0.5789473684210527
-            else:
-                return 0, 0.42105263157894735
+            return 0, 0.5087719298245614
 
     def tree10(self, x):
         """
         Random forest's tree #10
         """
-        if x[0] < 76.0:
-            if x[1] < 30.0:
-                return 1, 0.45614035087719296
-            else:
-                return 0, 0.543859649122807
+        if x[1] < -0.3325212299823761:
+            return 1, 0.45614035087719296
         else:
             return 0, 0.543859649122807
 
@@ -232,103 +217,91 @@ class RandomForestClassifier:
         """
         Random forest's tree #11
         """
-        if x[1] < 29.0:
-            return 1, 0.5087719298245614
+        if x[1] < -0.3325212299823761:
+            return 1, 0.38596491228070173
         else:
-            return 0, 0.49122807017543857
+            return 0, 0.6140350877192983
 
     def tree12(self, x):
         """
         Random forest's tree #12
         """
-        if x[0] < 69.0:
-            return 0, 0.40350877192982454
+        if x[1] < -0.3325212299823761:
+            return 1, 0.5964912280701754
         else:
-            if x[1] < 29.0:
-                return 1, 0.5964912280701754
-            else:
-                return 0, 0.40350877192982454
+            return 0, 0.40350877192982454
 
     def tree13(self, x):
         """
         Random forest's tree #13
         """
-        if x[0] < 69.0:
-            return 0, 0.43859649122807015
+        if x[0] < 0.10112998075783253:
+            return 0, 0.42105263157894735
         else:
-            if x[0] < 76.0:
-                return 1, 0.5614035087719298
+            if x[1] < -0.30122511088848114:
+                return 1, 0.5789473684210527
             else:
-                return 0, 0.43859649122807015
+                return 0, 0.42105263157894735
 
     def tree14(self, x):
         """
         Random forest's tree #14
         """
-        if x[0] < 69.0:
-            return 0, 0.5263157894736842
+        if x[0] < 0.10112998075783253:
+            return 0, 0.45614035087719296
         else:
-            if x[0] < 76.0:
-                return 1, 0.47368421052631576
+            if x[0] < 0.5730698779225349:
+                return 1, 0.543859649122807
             else:
-                return 0, 0.5263157894736842
+                return 0, 0.45614035087719296
 
     def tree15(self, x):
         """
         Random forest's tree #15
         """
-        if x[0] < 69.0:
-            return 0, 0.45614035087719296
+        if x[0] < 0.10112998075783253:
+            return 0, 0.49122807017543857
         else:
-            if x[0] < 76.0:
-                return 1, 0.543859649122807
+            if x[1] < -0.30122511088848114:
+                return 1, 0.5087719298245614
             else:
-                return 0, 0.45614035087719296
+                return 0, 0.49122807017543857
 
     def tree16(self, x):
         """
         Random forest's tree #16
         """
-        if x[0] < 69.0:
-            return 0, 0.47368421052631576
+        if x[1] < -0.3325212299823761:
+            return 1, 0.42105263157894735
         else:
-            if x[0] < 76.0:
-                return 1, 0.5263157894736842
-            else:
-                return 0, 0.47368421052631576
+            return 0, 0.5789473684210527
 
     def tree17(self, x):
         """
         Random forest's tree #17
         """
-        if x[0] < 69.0:
-            return 0, 0.49122807017543857
+        if x[1] < -0.3325212299823761:
+            return 1, 0.5614035087719298
         else:
-            if x[1] < 29.0:
-                return 1, 0.5087719298245614
-            else:
-                return 0, 0.49122807017543857
+            return 0, 0.43859649122807015
 
     def tree18(self, x):
         """
         Random forest's tree #18
         """
-        if x[0] < 76.0:
-            if x[0] < 69.0:
-                return 0, 0.43859649122807015
-            else:
-                return 1, 0.5614035087719298
-        else:
+        if x[0] < 0.10112998075783253:
             return 0, 0.43859649122807015
+        else:
+            if x[1] < -0.30122511088848114:
+                return 1, 0.5614035087719298
+            else:
+                return 0, 0.43859649122807015
 
     def tree19(self, x):
         """
         Random forest's tree #19
         """
-        if x[0] < 69.0:
-            return 0, 0.5789473684210527
+        if x[1] < -0.30122511088848114:
+            return 1, 0.5614035087719298
         else:
-            if x[1] < 29.0:
-                return 1, 0.42105263157894735
-            else:
-                return 0, 0.5789473684210527
+            return 0, 0.43859649122807015
