@@ -1,7 +1,8 @@
-from sklearn.model_selection import cross_val_score
+from sklearn.metrics import precision_recall_curve, average_precision_score
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 scaler_path = "../models/scaler.pkl"
 
@@ -26,7 +27,18 @@ model_path = "../models/random_forest_model.pkl"
 # Load the trained model
 clf = joblib.load(model_path)
 
-# Perform 5-fold cross-validation
-cv_scores = cross_val_score(clf, X_train, y_train, cv=5, scoring='accuracy')
-print(f'Cross-validation scores: {cv_scores}')
-print(f'Mean CV Accuracy: {cv_scores.mean():.3f}')
+# Predict probabilities for the positive class
+y_prob = clf.predict_proba(X_test)[:, 1]
+
+# Compute precision-recall curve
+precision, recall, thresholds = precision_recall_curve(y_test, y_prob)
+avg_precision = average_precision_score(y_test, y_prob)
+
+# Plot precision-recall curve
+plt.plot(recall, precision, label=f'AP = {avg_precision:.3f}')
+plt.xlabel('Recall')
+plt.ylabel('Precision')
+plt.title('Precision-Recall Curve')
+plt.legend()
+plt.savefig('diagrams/precision-recall.png') 
+plt.show()

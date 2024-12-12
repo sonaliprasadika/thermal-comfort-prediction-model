@@ -1,4 +1,5 @@
-from sklearn.model_selection import cross_val_score
+from sklearn.metrics import roc_curve, auc
+import matplotlib.pyplot as plt
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
@@ -26,7 +27,19 @@ model_path = "../models/random_forest_model.pkl"
 # Load the trained model
 clf = joblib.load(model_path)
 
-# Perform 5-fold cross-validation
-cv_scores = cross_val_score(clf, X_train, y_train, cv=5, scoring='accuracy')
-print(f'Cross-validation scores: {cv_scores}')
-print(f'Mean CV Accuracy: {cv_scores.mean():.3f}')
+# Predict probabilities for the positive class
+y_prob = clf.predict_proba(X_test)[:, 1]
+
+# Compute ROC curve
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+roc_auc = auc(fpr, tpr)
+
+# Plot ROC curve
+plt.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_auc:.3f})')
+plt.plot([0, 1], [0, 1], 'k--')  # Random guess line
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic (ROC)')
+plt.legend(loc="lower right")
+plt.savefig('diagrams/roc_curve.png') 
+plt.show()

@@ -1,7 +1,8 @@
-from sklearn.model_selection import cross_val_score
-import pandas as pd
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import joblib
+import pandas as pd
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 scaler_path = "../models/scaler.pkl"
 
@@ -26,7 +27,17 @@ model_path = "../models/random_forest_model.pkl"
 # Load the trained model
 clf = joblib.load(model_path)
 
-# Perform 5-fold cross-validation
-cv_scores = cross_val_score(clf, X_train, y_train, cv=5, scoring='accuracy')
-print(f'Cross-validation scores: {cv_scores}')
-print(f'Mean CV Accuracy: {cv_scores.mean():.3f}')
+# Predict on test data
+y_pred = clf.predict(X_test)
+
+# Generate confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Display confusion matrix and save as image
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
+disp.plot(cmap='viridis')
+
+# Save the confusion matrix plot as an image
+plt.tight_layout()  # Ensures everything fits within the figure
+plt.savefig('diagrams/confusion_matrix.png', dpi=300)  # Save with high resolution
+plt.close()  # Close the plot to release memory
