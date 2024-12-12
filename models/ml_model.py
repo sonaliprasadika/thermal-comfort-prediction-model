@@ -3,9 +3,17 @@ from everywhereml.sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
+import numpy as np
 
 # Prepare dataset
 df = pd.read_csv("../data/dataset.csv", sep=",").sample(frac=1, random_state=42).reset_index(drop=True)
+
+# Add noise to simulate sensor variability
+np.random.seed(42)  # For reproducibility
+df["Temperature"] += np.random.normal(0, 2, size=df.shape[0])  # ±2°C noise
+df["Humidity"] += np.random.normal(0, 2.5, size=df.shape[0])    # ±5%RH noise
+df["Pressure"] += np.random.normal(0, 1, size=df.shape[0])      # ±2 hPa noise
+
 X = df[["Temperature", "Humidity", "Pressure"]].values
 y = df["Label"].values
 
