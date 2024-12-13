@@ -1,3 +1,6 @@
+# Most of the following content is recieved from course materials
+# provided by IoT course staff (exercise 3 folder in Moodle). 
+# Content and changes made by our group are marked using comments. 
 from machine import Pin, I2C
 import network
 import time
@@ -72,6 +75,8 @@ while True:
     #publish(client, 'picow/temp', str(bmp.temperature))
     #publish(client, 'picow/pressure', str(bmp.pressure))
     
+    # ** code produced by group begins here, some parts are inspired by course material ** 
+
     # get timestamp to send with the sensor data. For evaluation purposes
     current_time = int(time.time() * 1000)
     # Subtract 2 hours (in milliseconds) because we are finland time 
