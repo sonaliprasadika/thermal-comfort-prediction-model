@@ -2,17 +2,17 @@
 # IoT 2024
 # Thermal Comfort Prediction Model for a Bio Sauna
 # Group information
-* Student 1: [Sonali Prasadika](https://github.com/sonaliprasadika)
-* Student 2: [Alexis Chambers](https://github.com/apchamb2)
-* Student 3: [Piyumi Weebadu Arachchige](https://github.com/PiyumiUoR)
-* Student 4: Emilia Pyyny-Polat
+* Student 1. Sonali Prasadika
+* Student 2. Alexis Chambers
+* Student 3. Piyumi Weebadu Arachchige
+* Student 4. Emilia Pyyny-Polat
 
 For this project, humidity, temperature, and pressure data were collected, processed, and visualized to predict the comfort of a bio sauna. A traditional Finnish sauna has temperatures from 80-100◦C and humidity of 10-20%. A bio sauna differs from a traditional Finnish sauna in its lower temperature range of 50-60◦C and higher humidity levels of up to 50%. 
 
 ## 🔗 Dependencies and Setup
 
 Following tools and libraries are required for setting up the project. 
-[![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://www.python.org)
+### 1. Install Python version 3.x
 
 - [x]  Install latest python version from [here.](https://www.python.org) 3.10.12 is recommended 
 - [x]  Install pip from [here.](https://pip.pypa.io/en/stable/installation/) 24.3.1 is recommended.
@@ -20,7 +20,7 @@ Note: pip will be available as a part of your python installation. you can check
 ```bash
 pip --version
 ```
-## Install the follwoing libs to run Machine Learning Model
+### 2. Install the follwoing libs to run Machine Learning Model
 - ☑️ everywhereml==0.1.4
 - ☑️ numpy==1.22.0
 - ☑️ pandas==1.5.3
@@ -28,3 +28,13 @@ pip --version
 - ☑️ matplotlib==3.6.0
 - ☑️ joblib==1.2.0
 
+## 🔗 Run the Machine Learning Model ans Evaluation
+### 1. Run ML Model inside the model directory
+```bash
+/models$ python ml_model.py 
+```
+### 2. Run files for each evaluation inside the evaluation directory
+Ex: Get the Classification Report
+```bash
+/evaluation$ python3 classification-report.py 
+```
