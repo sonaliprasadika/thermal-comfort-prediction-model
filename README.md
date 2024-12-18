@@ -1,0 +1,30 @@
+
+# IoT 2024
+# Thermal Comfort Prediction Model for a Bio Sauna
+# Group information
+* Student 1. Sonali Prasadika
+* Student 2. Alexis Chambers
+* Student 3. Piyumi Weebadu Arachchige
+* Student 4. Emilia Pyyny-Polat
+
+For this project, humidity, temperature, and pressure data were collected, processed, and visualized to predict the comfort of a bio sauna. A traditional Finnish sauna has temperatures from 80-100◦C and humidity of 10-20%. A bio sauna differs from a traditional Finnish sauna in its lower temperature range of 50-60◦C and higher humidity levels of up to 50%. 
+
+## 🔗 Dependencies and Setup
+
+Following tools and libraries are required for setting up the project. 
+[![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://www.python.org)
+
+- [x]  Install latest python version from [here.](https://www.python.org) 3.10.12 is recommended 
+- [x]  Install pip from [here.](https://pip.pypa.io/en/stable/installation/) 24.3.1 is recommended.
+Note: pip will be available as a part of your python installation. you can check the pip version for verifying.
+```bash
+pip --version
+```
+## install the follwoing libs to run Machine Learning Model
+- ☑️ everywhereml==0.1.4
+- ☑️ numpy==1.22.0
+- ☑️ pandas==1.5.3
+- ☑️ scikit-learn==1.2.0
+- ☑️ matplotlib==3.6.0
+- ☑️ joblib==1.2.0
+
