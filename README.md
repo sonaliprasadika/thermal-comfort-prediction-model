@@ -2,10 +2,10 @@
 # IoT 2024
 # Thermal Comfort Prediction Model for a Bio Sauna
 # Group information
-* Student 1. Sonali Prasadika
-* Student 2. Alexis Chambers
-* Student 3. Piyumi Weebadu Arachchige
-* Student 4. Emilia Pyyny-Polat
+* Student 1: [Sonali Prasadika](https://github.com/sonaliprasadika)
+* Student 2: Alexis Chambers
+* Student 3: Piyumi Weebadu Arachchige
+* Student 4: Emilia Pyyny-Polat
 
 For this project, humidity, temperature, and pressure data were collected, processed, and visualized to predict the comfort of a bio sauna. A traditional Finnish sauna has temperatures from 80-100◦C and humidity of 10-20%. A bio sauna differs from a traditional Finnish sauna in its lower temperature range of 50-60◦C and higher humidity levels of up to 50%. 
 
