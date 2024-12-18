@@ -20,7 +20,7 @@ Note: pip will be available as a part of your python installation. you can check
 ```bash
 pip --version
 ```
-## install the follwoing libs to run Machine Learning Model
+## Install the follwoing libs to run Machine Learning Model
 - ☑️ everywhereml==0.1.4
 - ☑️ numpy==1.22.0
 - ☑️ pandas==1.5.3
