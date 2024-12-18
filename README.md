@@ -28,13 +28,19 @@ pip --version
 - ☑️ matplotlib==3.6.0
 - ☑️ joblib==1.2.0
 
-## 🔗 Run the Machine Learning Model ans Evaluation
+## 🔗 Run the Machine Learning Model and Evaluation
 ### 1. Run ML Model inside the model directory
 ```bash
-/models$ python ml_model.py 
+cd models
+```
+```bash
+python ml_model.py 
 ```
 ### 2. Run files for each evaluation inside the evaluation directory
 Ex: Get the Classification Report
 ```bash
-/evaluation$ python3 classification-report.py 
+cd evaluation
+```
+```bash
+python classification-report.py 
 ```
