@@ -1,3 +1,7 @@
+# The base of following content is received from course materials
+# provided by IoT course staff (exercise 3 folder in Moodle)
+# We have altered and added into the existing material.  
+
 from machine import Pin, I2C, SoftI2C
 import network
 import time
