@@ -19,6 +19,9 @@ Note: pip will be available as a part of your python installation. you can check
 ```bash
 pip --version
 ```
+- [x]  Install BMP280 library [here](https://github.com/dafvid/micropython-bmp280/blob/master/bmp280.py)
+
+
 ### 2. Install the follwoing libs to run Machine Learning Model
 - ☑️ everywhereml==0.1.4
 - ☑️ numpy==1.22.0
@@ -46,6 +49,11 @@ python classification-report.py
 
 ## 🔗 Connection to the MQTT broker
 
+## Install libraries
+
+- ☑️ micropython-umqtt.simple==1.3.4
+- ☑️ influxdb-client==2.7.11
+
 Adding the properties to the [config.py](pico-code/config.py) should establish connectivity between clients and the broker. In HiveMQ broker, the broker details are under the `OVERVIEW` tab. The `MQTT_USER` and the `MQTT_PWD` are the web client details entered under the `WEB CLIENT` to connect the clients to the server. 
 
 ```python
@@ -54,11 +62,21 @@ MQTT_PORT= 8883
 MQTT_USER = ''  # access username
 MQTT_PWD = '' # access password
 ```
+Connect on Web Client page using username and password, subscribe all messages.
 
 The connectivity should be established in the MIT app inventor, InfluxDB, and Grafana by changing the properties of the MQTT extension. The same attributes should be used. 
 
+## Node-RED and InfluxDB
 
+Node-red: run command prompt as admin: 
+> node-red 
 
+Open http://localhost:1880/ in browser
 
+Influxdb: run command prompt as admin: 
+> cd "C:\Program Files\InfluxDB"
+> influxd
+
+Open http://127.0.0.1:8086/ in browser
 
 
