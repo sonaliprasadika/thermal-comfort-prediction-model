@@ -11,7 +11,7 @@ For this project, humidity, temperature, and pressure data were collected, proce
 ## 🔗 Dependencies and Setup
 
 The following tools and libraries are required for setting up the project. 
-### 1. Install Python version 3.x
+### Install Python version 3.x
 
 - [x]  Install latest python version from [here.](https://www.python.org) 3.10.12 is recommended 
 - [x]  Install pip from [here.](https://pip.pypa.io/en/stable/installation/) 24.3.1 is recommended.
@@ -22,7 +22,7 @@ pip --version
 - [x]  Install BMP280 library [here](https://github.com/dafvid/micropython-bmp280/blob/master/bmp280.py)
 
 
-### 2. Install the follwoing libs to run Machine Learning Model
+### Install the follwoing libs to run Machine Learning Model
 - ☑️ everywhereml==0.1.4
 - ☑️ numpy==1.22.0
 - ☑️ pandas==1.5.3
@@ -31,14 +31,14 @@ pip --version
 - ☑️ joblib==1.2.0
 
 ## 🔗 Run the Machine Learning Model and Evaluation
-### 1. Run ML Model inside the model directory
+### Run ML Model inside the model directory
 ```bash
 cd models
 ```
 ```bash
 python ml_model.py 
 ```
-### 2. Run files for each evaluation inside the evaluation directory
+### Run files for each evaluation inside the evaluation directory
 Ex: Get the Classification Report
 ```bash
 cd evaluation
@@ -66,17 +66,21 @@ Connect on Web Client page using username and password, subscribe all messages.
 
 The connectivity should be established in the MIT app inventor, InfluxDB, and Grafana by changing the properties of the MQTT extension. The same attributes should be used. 
 
-## Node-RED and InfluxDB
+## 🔗 Node-RED and InfluxDB
 
-Node-red: run command prompt as admin: 
-> node-red 
-
+### Node-red: run command prompt as admin: 
+```bash
+node-red 
+```
 Open http://localhost:1880/ in browser
 
-Influxdb: run command prompt as admin: 
-> cd "C:\Program Files\InfluxDB"
-> influxd
-
+### Influxdb: run command prompt as admin: 
+```bash
+cd "C:\Program Files\InfluxDB"
+```
+```bash
+influxd
+```
 Open http://127.0.0.1:8086/ in browser
 
 
