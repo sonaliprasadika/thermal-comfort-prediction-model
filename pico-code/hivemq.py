@@ -6,13 +6,11 @@ import network
 import time
 import json
 from bmp280 import BMP280
-from umqtt.simple import MQTTClient
+import gc
+
 import ssl
 import config
-import dht
-import model
-import ssd1306
-import gc
+
 
 # setup wifi
 ssid = config.ssid
@@ -39,6 +37,13 @@ else:
     network_info = wlan.ifconfig()
     print('[INFO] IP address:', network_info[0])
     
+
+import mip
+
+mip.install("umqtt.robust")
+mip.install("umqtt.simple")
+from umqtt.simple import MQTTClient
+
 # config ssl connection w Transport Layer Security encryption (no cert)
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT) # TLS_CLIENT = connect as client not server/broker
 context.verify_mode = ssl.CERT_NONE # CERT_NONE = not verify server/broker cert - CERT_REQUIRED: verify
@@ -54,60 +59,47 @@ client = MQTTClient(client_id=b'tumi_picow', server=config.MQTT_BROKER, port=con
 
 client.connect()
 
-# Initialize the I2C bus and the OLED display
-i2c = SoftI2C(scl=Pin(11), sda=Pin(10))
-
-devices = i2c.scan()
-
-if devices:
-    print("I2C devices found:", [hex(dev) for dev in devices])
-else:
-    print("No I2C devices found")
-    
-oled = ssd1306.SSD1306_I2C(128, 32, i2c)
 
 # define I2C connection and BMP
 i2c = machine.I2C(id=1, sda=Pin(14), scl=Pin(15)) # id=channel
 bmp = BMP280(i2c)
-dht22_sensor = dht.DHT22(Pin(22))
 
-green_led = Pin(16, Pin.OUT)
-red_led = Pin(17, Pin.OUT)
 
-# Function to update the OLED display
-def update_display(temp, hum, pressure, predicted_value):
-    oled.fill(0)  # Clear the display
-    oled.text("Temp: {:.1f} C".format(temp), 0, 0)
-    oled.text("Hum: {:.1f} %".format(hum), 0, 10)
-    oled.text("Press: {:.1f} hPa".format(pressure), 0, 20)
-    #oled.text("Pred: {}".format(predicted_value), 0, 30)
-    oled.show()
-    
-# Function to update LED status based on prediction
-def update_led(prediction):
-    if prediction == 1:
-        green_led.on()  # Turn on green LED
-        red_led.off()   # Turn off red LED
-    elif prediction == 0:
-        green_led.off() # Turn off green LED
-        red_led.on()    # Turn on red LED
-    else:
-        green_led.off() # Turn off green LED
-        red_led.off()   # Turn off red LED
-        
 def publish(mqtt_client, topic, value):
     mqtt_client.publish(topic, value)
     print("[INFO][PUB] Published {} to {} topic".format(value, topic))
 
 
 while True:
+    # publish as MQTT payload
+    #publish(client, 'picow/temp', str(bmp.temperature))
+    #publish(client, 'picow/pressure', str(bmp.pressure))
+    
+    # ** code produced by group begins here, some parts are inspired by course material ** 
+
     # get timestamp to send with the sensor data. For evaluation purposes
     current_time = int(time.time() * 1000)
     # Subtract 2 hours (in milliseconds) because we are finland time 
     two_hours_in_ms = 2 * 60 * 60 * 1000  # 2 hours in milliseconds
     adjusted_time = current_time - two_hours_in_ms
-    # publish as MQTT payload
-    dht22_sensor.measure()
+    
+    # *FOR BMP* send json payload with timestamp and sensor data 
+    # temperature_payload = {
+    #     "temperature": bmp.temperature,
+    #     "timestamp": adjusted_time
+    # }
+    
+    # pressure_payload = {
+    #     "pressure": bmp.pressure,
+    #     "timestamp": current_time
+    # }
+    
+
+    # DHT22 PART STARTS HERE
+    # NOTE import and initialize the DHT sensor stuff, it has not been done yet
+    # also add the leds, ML etc
+
+    # Read sensor values
     dht22_temp = dht22_sensor.temperature()
     dht22_hum = dht22_sensor.humidity()
     bmp_temp = bmp.temperature
@@ -130,22 +122,13 @@ while True:
         "timestamp": current_time
     }
     
-    # Prepare input for the model
-    features = [mean_temp, dht22_hum, bmp_pressure]
     
-    clf = model.RandomForestClassifier()
-    prediction = clf.predict(features)
-        
-    publish(client, 'temp', str(mean_temp))
-    publish(client, 'humidity', str(dht22_hum))
-    publish(client, 'pressure', str(bmp_pressure))
-    publish(client, 'prediction', str(prediction))
-    
-        # publish data 
+    # publish data 
     publish(client, 'picow/temp', json.dumps(temperature_payload))
     publish(client, 'picow/pressure', json.dumps(pressure_payload))
     publish(client, 'picow/humidity', json.dumps(humidity_payload))
 
+    
     # this part is for memory usage evaluation
     gc.collect()
     free_memory = gc.mem_free()
@@ -156,7 +139,6 @@ while True:
     publish(client, 'picow/memory_allocated', str(allocated_memory))
     publish(client, 'picow/memory_total', str(total_memory))
 
-    update_display(dht22_temp, dht22_hum, bmp_pressure, prediction)
-    update_led(prediction)
     # every 2s
     time.sleep_ms(2000)
+

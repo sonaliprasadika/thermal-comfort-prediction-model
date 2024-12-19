@@ -36,10 +36,10 @@ def update_display(temp, hum, pressure, predicted_value):
     
 # Function to update LED status based on prediction
 def update_led(prediction):
-    if prediction == 1:
+    if prediction == 0:
         green_led.on()  # Turn on green LED
         red_led.off()   # Turn off red LED
-    elif prediction == 0:
+    elif prediction == 1:
         green_led.off() # Turn off green LED
         red_led.on()    # Turn on red LED
     else:
