@@ -1,4 +1,3 @@
-
 # IoT 2024
 # Thermal Comfort Prediction Model for a Bio Sauna
 # Group information
@@ -11,7 +10,7 @@ For this project, humidity, temperature, and pressure data were collected, proce
 
 ## 🔗 Dependencies and Setup
 
-Following tools and libraries are required for setting up the project. 
+The following tools and libraries are required for setting up the project. 
 ### 1. Install Python version 3.x
 
 - [x]  Install latest python version from [here.](https://www.python.org) 3.10.12 is recommended 
@@ -44,3 +43,10 @@ cd evaluation
 ```bash
 python classification-report.py 
 ```
+
+## 🔗 Connection to the MQTT broker
+
+The connectivity between clients and the broker should be established by adding the properties to the [config.py](pico-code/config.py).
+
+
+
