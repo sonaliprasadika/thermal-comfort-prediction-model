@@ -37,7 +37,7 @@ clf.fit(X_train, y_train)
 
 # Evaluate and predict
 print(f'Score: {clf.score(X_test, y_test):3.3f}')
-prediction = clf.predict([scaler.transform([[70, 20, 1000]])[0]])  # Transform and index the result
+prediction = clf.predict([scaler.transform([[54.2, 50.9, 1002]])[0]])  # Transform and index the result
 print("Prediction for new input:", prediction)
 
 # Save the trained model
@@ -57,3 +57,5 @@ model = random_forest_model.RandomForestClassifier()
 # Transform the input and convert it to a Python list
 normalized_input = scaler.transform([[70, 20, 1000]])[0].tolist()
 print(model.predict(normalized_input))
+
+
