@@ -54,11 +54,18 @@ MQTT_PORT= 8883
 MQTT_USER = ''  # access username
 MQTT_PWD = '' # access password
 ```
+Connect on Web Client page using username and password, subscribe all messages.
 
 The connectivity should be established in the MIT app inventor, InfluxDB, and Grafana by changing the properties of the MQTT extension. The same attributes should be used. 
 
+## Node-RED and InfluxDB
 
+Node-red: run command prompt as admin: > node-red 
+Open http://localhost:1880/ in browser
 
+Influxdb: run command prompt as admin: > cd "C:\Program Files\InfluxDB"
+> influxd
 
+Open http://127.0.0.1:8086/ in browser
 
 
