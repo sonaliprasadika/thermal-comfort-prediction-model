@@ -48,12 +48,14 @@ python classification-report.py
 
 Adding the properties to the [config.py](pico-code/config.py) should establish connectivity between clients and the broker. In HiveMQ broker, the broker details are under the `OVERVIEW` tab. The `MQTT_USER` and the `MQTT_PWD` are the web client details entered under the `WEB CLIENT` to connect the clients to the server. 
 
-´´´python
+```python
 MQTT_BROKER = '' # broker/server URL
 MQTT_PORT= 8883
 MQTT_USER = ''  # access username
 MQTT_PWD = '' # access password
-´´´
+```
+
+The connectivity should be established in the MIT app inventor, InfluxDB, and Grafana by changing the properties of the MQTT extension. The same attributes should be used. 
 
 
 
